@@ -1,0 +1,22 @@
+{
+  "name": "jito-fee-discord-bot",
+  "author": "Faqahat",
+  "homepage": "https://github.com/faqahat/jito-fee-discordbot",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "tsc": "tsc --noEmit"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "discord.js": "^14.15.2",
+    "dotenv": "^16.4.5",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/node-cron": "^3.0.11",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
