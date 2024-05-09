@@ -1,7 +1,7 @@
 {
   "name": "jito-fee-discord-bot",
   "author": "Faqahat",
-  "homepage": "https://github.com/faqahat/jito-fee-discordbot",
+  "homepage": "https://github.com/Faqahat/Jito-Fee-Discord-Bot",
   "version": "1.0.0",
   "scripts": {
     "start": "ts-node index.ts",
