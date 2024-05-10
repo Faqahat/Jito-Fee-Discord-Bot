@@ -3,7 +3,7 @@
 ##### Add The Bot To Your Server:  https://discord.com/oauth2/authorize?client_id=1237883268616028201&permissions=17877801978944&scope=bot
 
 
-###Jito Helper: Optimize Your Jito Transactions. Real-time Tip Averages & Success Predictions
+### Jito Helper: Optimize Your Jito Transactions. Real-time Tip Averages & Success Predictions
 
 ##### This indispensable Discord bot empowers you to make informed Jito transaction decisions. Key features include:
 
