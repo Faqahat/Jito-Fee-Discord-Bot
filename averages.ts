@@ -69,3 +69,53 @@ export function calculateAverage(
   }
   return average;
 }
+export function getTransactionChance(value: number): number {
+  // Get the current time minus 4 minutes
+  const fourMinutesAgo = Date.now() - 3 * 60 * 1000;
+
+  // Filter the data to only include entries from the last 4 minutes
+  const lastFourMinutesData = data.filter(
+    (entry) => Date.parse(entry.timestamp) >= fourMinutesAgo
+  );
+
+  // Define the percentiles and their corresponding values
+  const percentiles = [
+    { percentile: 25, value: lastFourMinutesData[0].twentyfive },
+    { percentile: 50, value: lastFourMinutesData[0].fifty },
+    { percentile: 75, value: lastFourMinutesData[0].seventyfive },
+    { percentile: 95, value: lastFourMinutesData[0].ninetyfive },
+    { percentile: 99, value: lastFourMinutesData[0].ninetynine },
+  ];
+
+  // Find the two percentiles that the input value is between
+  let lowerPercentile, upperPercentile;
+  for (let i = 0; i < percentiles.length - 1; i++) {
+    if (value >= percentiles[i].value && value <= percentiles[i + 1].value) {
+      lowerPercentile = percentiles[i];
+      upperPercentile = percentiles[i + 1];
+      break;
+    }
+  }
+
+  // If the input value is not between any two percentiles, it is below the 25th percentile
+  if (!lowerPercentile || !upperPercentile) {
+    // If the input value is greater than the maximum value in the data, return 100
+    if (value > percentiles[percentiles.length - 1].value) {
+      return 100.0;
+    }
+    // If the input value is less than the 25th percentile, return -1
+    else {
+      return -1.0;
+    }
+  }
+
+  // Calculate the exact percentile by linear interpolation
+  const slope =
+    (upperPercentile.percentile - lowerPercentile.percentile) /
+    (upperPercentile.value - lowerPercentile.value);
+  const exactPercentile =
+    lowerPercentile.percentile + slope * (value - lowerPercentile.value);
+
+  // Return the message
+  return parseFloat(exactPercentile.toFixed(0));
+}

@@ -1,5 +1,5 @@
 import { Client, Events, GatewayIntentBits, EmbedBuilder } from "discord.js";
-import { averages } from "./averages";
+import { averages, getTransactionChance } from "./averages";
 require("dotenv").config();
 const token = process.env.DISCORD_TOKEN;
 
@@ -72,6 +72,35 @@ export function startDiscordBot() {
             }
           );
 
+        interaction.reply({ embeds: [embed] });
+      } else if (interaction.commandName === "chance") {
+        let fee = interaction.options.getNumber("fee");
+        let percent = getTransactionChance(fee);
+
+        const embed = new EmbedBuilder()
+          .setTitle("Jito: Transaction Sucess Chances")
+          .setColor("Purple")
+          .setTimestamp();
+        if (percent > 26 && percent < 40) embed.setColor("Orange");
+        if (percent > 40 && percent < 50) embed.setColor("Yellow");
+        if (percent > 50) embed.setColor("Green");
+        if (percent < 26) {
+          embed.setColor("Red");
+          embed.setDescription(
+            "There's a less than `" +
+              25 +
+              "%` chance that your transaction will succeed with `" +
+              fee +
+              "` Fee."
+          );
+        } else
+          embed.setDescription(
+            "There's a `" +
+              percent +
+              "%` chance that your transaction will succeed with `" +
+              fee +
+              "` Fee."
+          );
         interaction.reply({ embeds: [embed] });
       }
     }
