@@ -1,5 +1,5 @@
 import { fetchData } from "./data";
-import { calculateAverages } from "./averages";
+import { calculateAverages, getTransactionChance } from "./averages";
 import { startDiscordBot } from "./discord";
 import cron from "node-cron";
 
