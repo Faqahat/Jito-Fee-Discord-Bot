@@ -1,6 +1,6 @@
 # Jito Fee Average - Discord Bot
 ![N|Solid](https://i.imgur.com/PdUjhdx.png)
-##### Add The Bot To Your Server:  https://discord.com/oauth2/authorize?client_id=1237883268616028201&permissions=17877801978944&scope=bot
+##### Add The Bot To Your Server:  https://top.gg/bot/1237883268616028201
 
 
 ### Jito Helper: Optimize Your Jito Transactions. Real-time Tip Averages & Success Predictions
