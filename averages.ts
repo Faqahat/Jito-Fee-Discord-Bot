@@ -17,6 +17,7 @@ export function calculateAverages() {
     if (err) {
       console.error("Failed to write to log file:", err);
     }
+    return averages;
   });
 }
 
@@ -38,6 +39,7 @@ export function calculateAverage(
     return null;
   }
   const filteredData = data.filter((row) => new Date(row.timestamp) >= past);
+  console.log(filteredData);
   const average: IAverageRow = {
     period: `${minutes}m`,
     startTime: past.toISOString(),
@@ -67,6 +69,7 @@ export function calculateAverage(
     average.ninetynine = formatNumber(average.ninetynine / filteredData.length);
     average.ema50 = formatNumber(average.ema50 / filteredData.length);
   }
+  console.log(average);
   return average;
 }
 export function getTransactionChance(value: number): number {

@@ -5,10 +5,6 @@ const token = process.env.DISCORD_TOKEN;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-client.once(Events.ClientReady, (readyClient: any) => {
-  console.log(`Ready! Logged in as ${readyClient.user.tag}`);
-});
-
 client.on("ready", async () => {
   if (client.user) {
     console.log(`Logged in as ${client.user.tag}`);
@@ -29,7 +25,7 @@ export function startDiscordBot() {
           else if (textRecieved == 30) minutes = "30m";
           else if (textRecieved == 60) minutes = "60m";
         } else textRecieved = 20;
-
+        console.log(averages)
         const embed = new EmbedBuilder()
           .setTitle("Jito Tips - Floor Price")
           .setColor("Purple")

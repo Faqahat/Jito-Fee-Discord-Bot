@@ -3,7 +3,7 @@ import { IRow } from "./types";
 
 export var data: IRow[] = [];
 
-export async function fetchData(url: string): Promise<void> {
+export async function fetchData(url: string): Promise<IRow[]> {
   try {
     const response = await axios.get(url);
     const formattedData: IRow[] = response.data.data.rows.map(
@@ -19,10 +19,11 @@ export async function fetchData(url: string): Promise<void> {
         };
       }
     );
-
     data = formattedData;
+    return formattedData;
   } catch (error) {
     console.error(`Error fetching data: ${error}`);
+    return []; // Return an empty array in case of error
   }
 }
 
